@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اسماء الحسنیٰ - تحفہ اطفال</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#FFD700; --deep-blue:#0D1B4C; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+
+  body {
+    font-family:'Amiri',serif;
+    background:linear-gradient(135deg,#0D1B4C 0%,#1A237E 35%,#0D47A1 65%,#006064 100%);
+    min-height:100vh;overflow-x:hidden;position:relative;
+  }
+
+  /* Stars */
+  .stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .star{position:absolute;background:#FFD700;border-radius:50%;animation:twinkle 2s infinite alternate}
+  @keyframes twinkle{0%{opacity:.2;transform:scale(.8)}100%{opacity:1;transform:scale(1.2)}}
+
+  /* Geo */
+  .geo{position:fixed;opacity:.06;pointer-events:none;z-index:0;animation:floatG 8s ease-in-out infinite alternate}
+  @keyframes floatG{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(-30px) rotate(20deg)}}
+
+  .container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:20px}
+
+  /* Header */
+  .header{text-align:center;padding:40px 20px 20px}
+  .badge{
+    display:inline-block;background:linear-gradient(135deg,#FFD700,#FFA000);
+    color:#0D1B4C;font-size:14px;font-family:'Noto Nastaliq Urdu',serif;
+    padding:6px 20px;border-radius:30px;margin-bottom:15px;font-weight:700;
+    box-shadow:0 4px 15px rgba(255,215,0,.4);animation:glow 2s ease-in-out infinite;
+  }
+  @keyframes glow{0%,100%{box-shadow:0 4px 15px rgba(255,215,0,.4)}50%{box-shadow:0 4px 30px rgba(255,215,0,.8)}}
+  .main-title{
+    font-family:'Amiri',serif;font-size:clamp(34px,7vw,70px);color:#FFD700;
+    text-shadow:0 0 30px rgba(255,215,0,.6),0 4px 8px rgba(0,0,0,.5);line-height:1.2;
+  }
+  .subtitle{font-family:'Noto Nastaliq Urdu',serif;font-size:clamp(14px,3vw,20px);color:#B2EBF2;margin-top:8px}
+  .cresrow{font-size:28px;margin:10px 0;letter-spacing:8px;animation:bounce 1.5s ease-in-out infinite alternate}
+  @keyframes bounce{0%{transform:translateY(0)}100%{transform:translateY(-8px)}}
+
+  /* Instruction */
+  .infobox{
+    background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
+    border:2px solid rgba(255,215,0,.3);border-radius:20px;
+    padding:14px 22px;text-align:center;margin:0 auto 16px;max-width:660px;
+    font-family:'Noto Nastaliq Urdu',serif;font-size:15px;color:#FFF9C4;
+    direction:rtl;line-height:2.2;
+  }
+  .infobox b{color:#FFD700}
+
+  /* Recording bar (bottom fixed) */
+  #recBar{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;
+    background:linear-gradient(135deg,#B71C1C,#880E4F);
+    padding:14px 20px;text-align:center;
+    font-family:'Noto Nastaliq Urdu',serif;color:white;font-size:16px;
+    box-shadow:0 -4px 20px rgba(0,0,0,.5);direction:rtl;
+    align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  }
+  #recBar.show{display:flex}
+  .recdot{
+    width:14px;height:14px;border-radius:50%;background:#FF5252;
+    animation:blink .7s ease-in-out infinite alternate;display:inline-block;
+  }
+  @keyframes blink{0%{opacity:.2}100%{opacity:1}}
+  #recNameShow{font-family:'Amiri',serif;font-size:24px;color:#FFD700}
+  #recTimer{font-size:18px;font-family:'Amiri',serif;color:#FFCDD2;min-width:44px}
+  #stopBtn{
+    background:#FFD700;color:#0D1B4C;border:none;
+    padding:8px 22px;border-radius:20px;font-size:15px;font-weight:700;
+    cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;
+    transition:transform .2s;
+  }
+  #stopBtn:hover{transform:scale(1.05)}
+
+  /* Grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:20px;padding:10px 0 90px;
+  }
+
+  /* Card */
+  .card{
+    border-radius:24px;padding:24px 18px 44px;
+    position:relative;overflow:hidden;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
+    border:3px solid rgba(255,255,255,.2);text-align:center;
+    animation:cin .6s ease both;
+  }
+  .card:hover{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px var(--cg);
+    border-color:rgba(255,255,255,.45);
+  }
+  @keyframes cin{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+  .card::before{
+    content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;
+    background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);pointer-events:none;
+  }
+
+  /* Number */
+  .num{
+    position:absolute;top:12px;left:14px;width:32px;height:32px;
+    border-radius:50%;background:rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:white;font-family:'Amiri',serif;
+    border:1.5px solid rgba(255,255,255,.4);
+  }
+
+  /* Emoji play icon */
+  .eicon{
+    position:absolute;top:10px;right:14px;font-size:22px;cursor:pointer;
+    transition:transform .3s;animation:eib 2.5s ease-in-out infinite;z-index:5;
+  }
+  @keyframes eib{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+  .card:hover .eicon{transform:scale(1.3)}
+
+  /* Saved badge */
+  .savedbadge{
+    position:absolute;top:10px;right:46px;
+    background:#4CAF50;color:white;font-size:11px;
+    padding:2px 8px;border-radius:12px;
+    font-family:'Noto Nastaliq Urdu',serif;
+    display:none;align-items:center;gap:3px;z-index:5;
+    box-shadow:0 2px 6px rgba(0,0,0,.3);
+  }
+  .savedbadge.on{display:flex}
+
+  /* Arabic */
+  .aname{
+    font-family:'Amiri',serif;font-size:clamp(26px,5vw,36px);font-weight:700;
+    color:white;text-shadow:0 2px 8px rgba(0,0,0,.4),0 0 20px rgba(255,255,255,.3);
+    line-height:1.3;margin:18px 0 10px;direction:rtl;
+  }
+  .divider{
+    width:55%;height:2px;
+    background:linear-gradient(to right,transparent,rgba(255,255,255,.6),transparent);
+    margin:8px auto;border-radius:2px;
+  }
+  .umean{
+    font-family:'Noto Nastaliq Urdu',serif;font-size:clamp(13px,2.5vw,15px);
+    color:rgba(255,255,255,.92);line-height:1.9;direction:rtl;
+  }
+
+  /* Bottom action bar */
+  .acts{
+    position:absolute;bottom:0;left:0;right:0;
+    display:flex;border-top:1px solid rgba(255,255,255,.15);
+  }
+  .abtn{
+    flex:1;padding:9px 4px;border:none;background:transparent;
+    color:rgba(255,255,255,.85);font-size:12px;cursor:pointer;
+    font-family:'Noto Nastaliq Urdu',serif;
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    transition:background .2s;
+  }
+  .abtn:hover{background:rgba(255,255,255,.18)}
+  .abtn .ic{font-size:18px;line-height:1}
+  .abtn:first-child{border-radius:0 0 21px 0}
+  .abtn:last-child {border-radius:0 0 0 21px}
+  .abtn.mid{border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15)}
+  .dbtn{display:none}
+  .dbtn.on{display:flex}
+
+  /* Playing */
+  .card.playing{animation:pp .4s ease-in-out infinite alternate}
+  @keyframes pp{
+    0%{transform:scale(1) translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+    100%{transform:scale(1.03) translateY(-7px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 40px var(--cg)}
+  }
+  /* Recording */
+  .card.recarding{animation:rp .5s ease-in-out infinite alternate}
+  @keyframes rp{
+    0%{border-color:#FF5252;box-shadow:0 0 0 rgba(255,82,82,.5)}
+    100%{border-color:#FF5252;box-shadow:0 0 25px rgba(255,82,82,.8)}
+  }
+
+  /* Waves */
+  .waves{
+    display:none;position:absolute;bottom:42px;left:50%;
+    transform:translateX(-50%);gap:4px;align-items:flex-end;height:20px;
+  }
+  .card.playing .waves{display:flex}
+  .wb{width:4px;background:rgba(255,255,255,.8);border-radius:2px;animation:wa .6s ease-in-out infinite alternate}
+  .wb:nth-child(1){height:8px; animation-delay:.0s}
+  .wb:nth-child(2){height:16px;animation-delay:.1s}
+  .wb:nth-child(3){height:12px;animation-delay:.2s}
+  .wb:nth-child(4){height:18px;animation-delay:.15s}
+  .wb:nth-child(5){height:10px;animation-delay:.05s}
+  @keyframes wa{0%{transform:scaleY(.5);opacity:.6}100%{transform:scaleY(1);opacity:1}}
+
+  /* Colours */
+  .c1 {background:linear-gradient(135deg,#1A237E,#283593);--cg:rgba(26,35,126,.8)}
+  .c2 {background:linear-gradient(135deg,#1B5E20,#2E7D32);--cg:rgba(27,94,32,.8)}
+  .c3 {background:linear-gradient(135deg,#880E4F,#AD1457);--cg:rgba(136,14,79,.8)}
+  .c4 {background:linear-gradient(135deg,#E65100,#F57C00);--cg:rgba(230,81,0,.8)}
+  .c5 {background:linear-gradient(135deg,#006064,#00838F);--cg:rgba(0,96,100,.8)}
+  .c6 {background:linear-gradient(135deg,#4A148C,#6A1B9A);--cg:rgba(74,20,140,.8)}
+  .c7 {background:linear-gradient(135deg,#B71C1C,#C62828);--cg:rgba(183,28,28,.8)}
+  .c8 {background:linear-gradient(135deg,#0D47A1,#1565C0);--cg:rgba(13,71,161,.8)}
+  .c9 {background:linear-gradient(135deg,#33691E,#558B2F);--cg:rgba(51,105,30,.8)}
+  .c10{background:linear-gradient(135deg,#004D40,#00695C);--cg:rgba(0,77,64,.8)}
+  .c11{background:linear-gradient(135deg,#37474F,#455A64);--cg:rgba(55,71,79,.8)}
+  .c12{background:linear-gradient(135deg,#5D4037,#795548);--cg:rgba(93,64,55,.8)}
+
+  .footer{text-align:center;padding:20px;font-family:'Noto Nastaliq Urdu',serif;font-size:13px;color:rgba(255,255,255,.4);direction:rtl}
+  .footer strong{color:#FFD700}
+
+  #fmtErrModal.show { display:flex; }
+  #permModal{
+    display:none;position:fixed;inset:0;z-index:2000;
+    background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
+    align-items:center;justify-content:center;padding:20px;
+  }
+  #permModal.show{display:flex}
+  .perm-box{
+    background:linear-gradient(145deg,#1A237E,#0D47A1);
+    border:2px solid rgba(255,215,0,.5);
+    border-radius:28px;padding:30px 24px;max-width:360px;width:100%;
+    text-align:center;font-family:'Noto Nastaliq Urdu',serif;
+    direction:rtl;
+    box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,215,0,.15);
+    animation:popIn .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+  .perm-mic{font-size:56px;margin-bottom:10px;animation:micPulse 1.2s ease-in-out infinite alternate}
+  @keyframes micPulse{0%{transform:scale(1)}100%{transform:scale(1.15)}}
+  .perm-title{font-size:20px;color:#FFD700;font-weight:700;margin-bottom:8px}
+  .perm-name{
+    font-family:'Amiri',serif;font-size:28px;color:white;
+    background:rgba(255,255,255,.12);border-radius:14px;
+    padding:8px 16px;margin:10px 0;display:inline-block;
+  }
+  .perm-msg{font-size:14px;color:#B2EBF2;line-height:2.1;margin:10px 0 18px}
+  .perm-steps{
+    background:rgba(0,0,0,.25);border-radius:14px;padding:12px 16px;
+    text-align:right;font-size:13px;color:#FFF9C4;line-height:2.3;margin-bottom:18px;
+  }
+  .perm-steps b{color:#FFD700}
+  .perm-btns{display:flex;gap:10px;justify-content:center;flex-direction:column}
+  .perm-allow{
+    background:linear-gradient(135deg,#4CAF50,#2E7D32);
+    color:white;border:none;padding:14px 20px;border-radius:16px;
+    font-size:16px;font-family:'Noto Nastaliq Urdu',serif;
+    cursor:pointer;font-weight:700;
+    box-shadow:0 4px 15px rgba(76,175,80,.4);
+    transition:transform .2s,box-shadow .2s;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .perm-allow:hover{transform:scale(1.04);box-shadow:0 6px 20px rgba(76,175,80,.6)}
+  .perm-cancel{
+    background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.2);padding:10px 20px;
+    border-radius:16px;font-size:14px;font-family:'Noto Nastaliq Urdu',serif;
+    cursor:pointer;transition:background .2s;
+  }
+  .perm-cancel:hover{background:rgba(255,255,255,.2)}
+
+  /* Error modal */
+  #errModal{
+    display:none;position:fixed;inset:0;z-index:2000;
+    background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
+    align-items:center;justify-content:center;padding:20px;
+  }
+  #errModal.show{display:flex}
+  .err-box{
+    background:linear-gradient(145deg,#7f0000,#B71C1C);
+    border:2px solid rgba(255,180,0,.4);
+    border-radius:28px;padding:28px 22px;max-width:360px;width:100%;
+    text-align:center;font-family:'Noto Nastaliq Urdu',serif;direction:rtl;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+    animation:popIn .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .err-icon{font-size:50px;margin-bottom:8px}
+  .err-title{font-size:19px;color:#FFD700;font-weight:700;margin-bottom:10px}
+  .err-steps{
+    background:rgba(0,0,0,.3);border-radius:14px;padding:12px 16px;
+    text-align:right;font-size:13px;color:#FFECB3;line-height:2.4;margin-bottom:16px;
+  }
+  .err-steps b{color:#FFD700}
+  .err-ok{
+    background:#FFD700;color:#0D1B4C;border:none;
+    padding:12px 30px;border-radius:16px;font-size:15px;font-weight:700;
+    font-family:'Noto Nastaliq Urdu',serif;cursor:pointer;
+    transition:transform .2s;
+  }
+  .err-ok:hover{transform:scale(1.05)}
+
+  @media(max-width:600px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{padding:16px 10px 44px}
+    .aname{font-size:22px}
+    .abtn{font-size:11px;padding:8px 2px}
+    .abtn .ic{font-size:15px}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<svg class="geo" style="top:10%;right:5%;width:200px;height:200px" viewBox="0 0 200 200">
+  <polygon points="100,10 120,80 190,80 135,125 155,195 100,150 45,195 65,125 10,80 80,80" fill="#FFD700"/>
+</svg>
+<svg class="geo" style="top:42%;left:2%;width:150px;height:150px;animation-delay:2s" viewBox="0 0 150 150">
+  <polygon points="75,5 95,55 148,55 107,87 122,138 75,107 28,138 43,87 2,55 55,55" fill="#00BCD4"/>
+</svg>
+<svg class="geo" style="bottom:15%;right:8%;width:180px;height:180px;animation-delay:4s" viewBox="0 0 180 180">
+  <polygon points="90,5 110,65 175,65 125,103 145,165 90,128 35,165 55,103 5,65 70,65" fill="#E91E63"/>
+</svg>
+
+<!-- ══ Format Error Modal ══ -->
+<div id="fmtErrModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;flex-wrap:wrap">
+  <div style="background:linear-gradient(145deg,#1565C0,#0D47A1);border:2px solid rgba(255,215,0,.5);border-radius:28px;padding:28px 22px;max-width:360px;width:100%;text-align:center;font-family:'Noto Nastaliq Urdu',serif;direction:rtl;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:popIn .35s cubic-bezier(.34,1.56,.64,1)">
+    <div style="font-size:50px;margin-bottom:8px">🎵</div>
+    <div id="fmtErrName" style="font-family:'Amiri',serif;font-size:28px;color:#FFD700;margin-bottom:10px"></div>
+    <div style="font-size:16px;color:#FFD700;font-weight:700;margin-bottom:12px">آواز چل نہیں رہی</div>
+    <div style="background:rgba(0,0,0,.3);border-radius:14px;padding:14px 16px;text-align:right;font-size:13px;color:#FFF9C4;line-height:2.4;margin-bottom:16px">
+      <b style="color:#FFD700">Voice Recorder کی فائل کا format مسئلہ ہے۔</b><br><br>
+      ✅ <b>حل:</b> Voice Recorder کی بجائے<br>
+      <b>WhatsApp Voice Note</b> استعمال کریں:<br><br>
+      ١. WhatsApp کھولیں → کسی کو voice note بھیجیں<br>
+      ٢. وہ audio file <b>Save</b> کریں<br>
+      ٣. 📁 فائل بٹن سے وہ file چنیں<br><br>
+      <b style="color:#FFD700">یا</b> کوئی بھی <b>.mp3 / .ogg / .wav</b><br>
+      فارمیٹ کی فائل استعمال کریں
+    </div>
+    <button id="fmtErrOk" style="background:#FFD700;color:#0D1B4C;border:none;padding:12px 30px;border-radius:16px;font-size:15px;font-weight:700;font-family:'Noto Nastaliq Urdu',serif;cursor:pointer">سمجھ گیا ✓</button>
+  </div>
+</div>
+
+<!-- ══ Permission Modal ══ -->
+<div id="permModal">
+  <div class="perm-box">
+    <div class="perm-mic">🎙️</div>
+    <div class="perm-title">مائکروفون کی اجازت دیں</div>
+    <div class="perm-name" id="permNameShow"></div>
+    <div class="perm-msg">اپنی آواز میں یہ نام ریکارڈ کرنے کے لیے<br>مائکروفون کی اجازت ضروری ہے</div>
+    <div class="perm-steps">
+      <b>📱 Android Chrome میں:</b><br>
+      ١. نیچے <b>«اجازت دیں»</b> بٹن دبائیں<br>
+      ٢. پاپ اَپ آئے تو <b>Allow</b> کریں<br>
+      ٣. اگر پاپ اَپ نہ آئے تو ↑ Address Bar میں<br>
+      &nbsp;&nbsp;&nbsp;🔒 آئیکن ← <b>Microphone → Allow</b>
+    </div>
+    <div class="perm-btns">
+      <button class="perm-allow" id="permAllowBtn">
+        <span>🎙️</span> اجازت دیں اور ریکارڈ شروع کریں
+      </button>
+      <button class="perm-cancel" id="permCancelBtn">منسوخ کریں</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Error Modal ══ -->
+<div id="errModal">
+  <div class="err-box">
+    <div class="err-icon">🚫</div>
+    <div class="err-title">مائکروفون کی اجازت نہیں ملی</div>
+    <div class="err-steps">
+      <b>اجازت دینے کا طریقہ:</b><br><br>
+      <b>Chrome Android:</b><br>
+      ١. Address Bar میں 🔒 پر ٹیپ کریں<br>
+      ٢. <b>Site settings</b> کھولیں<br>
+      ٣. <b>Microphone → Allow</b> کریں<br>
+      ٤. صفحہ <b>Refresh</b> کریں<br><br>
+      <b>یا:</b> Settings ← Apps ← Browser ←<br>
+      Permissions ← Microphone ← Allow
+    </div>
+    <button class="err-ok" id="errOkBtn">ٹھیک ہے</button>
+  </div>
+</div>
+
+<!-- Recording bar -->
+<div id="recBar">
+  <span class="recdot"></span>
+  <span>ریکارڈنگ جاری ہے:</span>
+  <span id="recNameShow"></span>
+  <span id="recTimer">0:00</span>
+  <button id="stopBtn">⏹ روکیں اور محفوظ کریں</button>
+</div>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">✨ تحفہ اطفال ✨</div>
+    <div class="cresrow">☪️ 🌟 ☪️ 🌟 ☪️</div>
+    <div class="main-title">أسماء الله الحسنى</div>
+    <div class="subtitle">اللہ تعالیٰ کے خوبصورت نام — اردو ترجمے کے ساتھ</div>
+  </div>
+
+  <div class="infobox">
+    <b>▶️ سنیں</b> — نام پر کلک کریں<br>
+    <b>🎙️ ریکارڈ</b> — براہ راست ریکارڈ (مائک پرمیشن چاہیے)<br>
+    <b>📁 فائل</b> — Voice Recorder سے فائل اپلوڈ کریں ✅ بغیر پرمیشن<br>
+    <b>🟢</b> — آواز محفوظ ہے &nbsp;|&nbsp; <b>🗑️</b> — مٹائیں
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="footer"><strong>اسماء الحسنیٰ</strong> — اللہ کے بہترین اور خوبصورت نام 💛</div>
+</div>
+
+<script>
+/* ── DATA ── */
+const NAMES=[
+  {n:0, ar:"اللَّهُ",          ur:"خدا — جو عبادت کے لائق ہے",       em:"🕌"},
+  {n:1, ar:"اَلرَّحْمٰنُ",      ur:"بڑا مہربان",                      em:"💚"},
+  {n:2, ar:"اَلرَّحِيمُ",       ur:"نہایت رحم کرنے والا",             em:"🌸"},
+  {n:3, ar:"اَلْمَلِكُ",        ur:"حقیقی بادشاہ",                     em:"👑"},
+  {n:4, ar:"اَلْقُدُّوسُ",      ur:"برائیوں سے پاک ذات",              em:"✨"},
+  {n:5, ar:"اَلسَّلَامُ",       ur:"ہر عیب سے سلامت",                 em:"☮️"},
+  {n:6, ar:"اَلْمُؤْمِنُ",      ur:"امن و امان دینے والا",             em:"🛡️"},
+  {n:7, ar:"اَلْمُهَيْمِنُ",    ur:"نگہبان",                           em:"👁️"},
+  {n:8, ar:"اَلْعَزِيزُ",       ur:"سب پر غالب",                       em:"⚡"},
+  {n:9, ar:"اَلْجَبَّارُ",      ur:"بگڑے کاموں کو درست کرنے والا",    em:"🔧"},
+  {n:10,ar:"اَلْمُتَكَبِّرُ",   ur:"بڑائی والا",                       em:"🌟"},
+  {n:11,ar:"اَلْخَالِقُ",       ur:"بے نمونہ پیدا کرنے والا",          em:"🌍"},
+  {n:12,ar:"اَلْبَارِئُ",       ur:"پیدا کرنے والا",                   em:"🌱"},
+  {n:13,ar:"اَلْمُصَوِّرُ",     ur:"صورت بنانے والا",                  em:"🎨"},
+  {n:14,ar:"اَلْغَفَّارُ",      ur:"گناہوں کو بخشنے والا",            em:"🌈"},
+  {n:15,ar:"اَلْقَهَّارُ",      ur:"سب کو قابو میں رکھنے والا",       em:"💪"},
+  {n:16,ar:"اَلْوَهَّابُ",      ur:"بغیر بدلے کے دینے والا",          em:"🎁"},
+  {n:17,ar:"اَلرَّزَّاقُ",      ur:"مخلوقات کو رزق دینے والا",        em:"🍀"},
+  {n:18,ar:"اَلْفَتَّاحُ",      ur:"بہت بڑا مشکل کشا",                em:"🔑"},
+  {n:19,ar:"اَلْعَلِيمُ",       ur:"ظاہر و باطن کو جاننے والا",       em:"📖"},
+  {n:20,ar:"اَلْقَابِضُ",       ur:"روزی تنگ کرنے والا",              em:"⚖️"},
+  {n:21,ar:"اَلْبَاسِطُ",       ur:"روزی میں وسعت کرنے والا",         em:"🌊"},
+  {n:22,ar:"اَلْخَافِضُ",       ur:"پست کردینے والا",                  em:"🌙"},
+];
+
+const COLS=['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12'];
+
+/* ── In-memory recordings store ── */
+const recs={};  // n -> base64 dataURL
+
+/* ── Persistent storage helpers ── */
+async function loadRec(n){
+  if(!window.storage) return;
+  try{
+    const r=await window.storage.get('rec:'+n);
+    if(r&&r.value){ recs[n]=r.value; refreshBadge(n); }
+  }catch(e){}
+}
+async function saveRec(n,dataURL){
+  recs[n]=dataURL;
+  if(window.storage) try{ await window.storage.set('rec:'+n,dataURL); }catch(e){}
+  refreshBadge(n);
+}
+async function delRec(n){
+  delete recs[n];
+  if(window.storage) try{ await window.storage.delete('rec:'+n); }catch(e){}
+  refreshBadge(n);
+}
+function refreshBadge(n){
+  const card=document.getElementById('card-'+n);
+  if(!card) return;
+  const has=!!recs[n];
+  card.querySelector('.savedbadge').classList.toggle('on',has);
+  card.querySelector('.dbtn').classList.toggle('on',has);
+}
+
+/* ── Build cards ── */
+const gridEl=document.getElementById('grid');
+NAMES.forEach((item,i)=>{
+  const cc=COLS[i%COLS.length];
+  const card=document.createElement('div');
+  card.className=`card ${cc}`;
+  card.id='card-'+item.n;
+  card.style.animationDelay=(i*.065).toFixed(2)+'s';
+
+  card.innerHTML=`
+    <div class="num">${item.n}</div>
+    <div class="eicon" title="آواز سنیں">${item.em}</div>
+    <div class="savedbadge"><span>🟢</span>محفوظ</div>
+    <div class="aname">${item.ar}</div>
+    <div class="divider"></div>
+    <div class="umean">${item.ur}</div>
+    <div class="waves">
+      <div class="wb"></div><div class="wb"></div>
+      <div class="wb"></div><div class="wb"></div><div class="wb"></div>
+    </div>
+    <div class="acts">
+      <button class="abtn play-btn"><span class="ic">▶️</span><span>سنیں</span></button>
+      <button class="abtn rec-btn" style="border-left:1px solid rgba(255,255,255,.15)"><span class="ic">🎙️</span><span>ریکارڈ</span></button>
+      <label  class="abtn upl-btn" style="border-left:1px solid rgba(255,255,255,.15);cursor:pointer">
+        <span class="ic">📁</span><span>فائل</span>
+        <input type="file" accept="audio/*" style="display:none" class="upl-input">
+      </label>
+      <button class="abtn dbtn" style="border-left:1px solid rgba(255,255,255,.15)"><span class="ic">🗑️</span><span>مٹائیں</span></button>
+    </div>
+  `;
+
+  card.querySelector('.eicon')  .addEventListener('click',e=>{e.stopPropagation();playCard(card,item)});
+  card.querySelector('.play-btn').addEventListener('click',e=>{e.stopPropagation();playCard(card,item)});
+  card.querySelector('.rec-btn') .addEventListener('click',e=>{e.stopPropagation();startRec(card,item)});
+  card.querySelector('.upl-input').addEventListener('change',e=>{
+    e.stopPropagation();
+    const file=e.target.files[0];
+    if(!file) return;
+    const reader=new FileReader();
+    reader.onloadend=()=>{ saveRec(item.n, reader.result); e.target.value=''; };
+    reader.readAsDataURL(file);
+  });
+  card.querySelector('.dbtn')    .addEventListener('click',e=>{
+    e.stopPropagation();
+    if(confirm('"'+item.ar+'" کی ریکارڈنگ مٹانی ہے؟')) delRec(item.n);
+  });
+
+  gridEl.appendChild(card);
+});
+
+/* ── Playback ── */
+let curCard=null, curAudio=null;
+
+function stopPlay(){
+  if(curCard){curCard.classList.remove('playing');curCard=null}
+  if(curAudio){curAudio.pause();curAudio=null}
+  speechSynthesis.cancel();
+}
+
+function playCard(card,item){
+  stopPlay();
+  curCard=card;
+  card.classList.add('playing');
+
+  if(recs[item.n]){
+    try{
+      const audio = new Audio();
+      audio.src = recs[item.n];
+      curAudio = audio;
+      const playPromise = audio.play();
+      if(playPromise !== undefined){
+        playPromise
+          .then(()=>{ /* playing OK */ })
+          .catch(err=>{
+            console.error('Play error:',err);
+            stopPlay();
+            showPlayError(item.ar);
+          });
+      }
+      audio.onended = ()=>stopPlay();
+      audio.onerror  = (e)=>{ console.error('Audio error',e); stopPlay(); showPlayError(item.ar); };
+    }catch(e){ stopPlay(); showPlayError(item.ar); }
+  } else {
+    const vs=speechSynthesis.getVoices();
+    const arV=vs.find(v=>v.lang.startsWith('ar'))||null;
+    const urV=vs.find(v=>v.lang.startsWith('ur'))||vs.find(v=>v.lang.startsWith('hi'))||null;
+
+    const uAr=new SpeechSynthesisUtterance(item.ar);
+    uAr.lang='ar-SA';uAr.rate=0.7;uAr.pitch=1.1;
+    if(arV)uAr.voice=arV;
+
+    const uUr=new SpeechSynthesisUtterance(item.ur);
+    uUr.lang=urV?urV.lang:'hi-IN';uUr.rate=0.75;
+    if(urV)uUr.voice=urV;
+    uUr.onend=()=>stopPlay();
+
+    speechSynthesis.speak(uAr);
+    uAr.onend=()=>setTimeout(()=>speechSynthesis.speak(uUr),250);
+  }
+}
+
+function showPlayError(arName){
+  document.getElementById('fmtErrName').textContent = arName;
+  document.getElementById('fmtErrModal').classList.add('show');
+}
+
+document.getElementById('fmtErrOk').addEventListener('click',()=>{
+  document.getElementById('fmtErrModal').classList.remove('show');
+});
+speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+
+/* ── Recording ── */
+let mRec=null, chunks=[], recCard=null, recItem=null;
+let timerInt=null, recSec=0;
+let pendingCard=null, pendingItem=null;
+
+const recBar    = document.getElementById('recBar');
+const recNameEl = document.getElementById('recNameShow');
+const recTimEl  = document.getElementById('recTimer');
+const stopBtn   = document.getElementById('stopBtn');
+
+/* Permission modal refs */
+const permModal    = document.getElementById('permModal');
+const permNameShow = document.getElementById('permNameShow');
+const permAllowBtn = document.getElementById('permAllowBtn');
+const permCancelBtn= document.getElementById('permCancelBtn');
+
+/* Error modal refs */
+const errModal = document.getElementById('errModal');
+const errOkBtn = document.getElementById('errOkBtn');
+
+/* Step 1: show friendly permission modal */
+function startRec(card, item){
+  if(mRec && mRec.state==='recording'){ finishRec(); return; }
+  pendingCard = card;
+  pendingItem = item;
+  permNameShow.textContent = item.ar;
+  permModal.classList.add('show');
+}
+
+/* Step 2: user tapped Allow — request mic */
+permAllowBtn.addEventListener('click', async ()=>{
+  permModal.classList.remove('show');
+  await doStartRec(pendingCard, pendingItem);
+});
+permCancelBtn.addEventListener('click', ()=>{ permModal.classList.remove('show'); });
+errOkBtn.addEventListener('click', ()=>{ errModal.classList.remove('show'); });
+
+/* Step 3: actually open microphone */
+async function doStartRec(card, item){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    const mime = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+      ? 'audio/webm;codecs=opus'
+      : MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/ogg';
+
+    mRec = new MediaRecorder(stream, {mimeType: mime});
+    chunks=[]; recCard=card; recItem=item;
+
+    mRec.ondataavailable = e=>{ if(e.data.size>0) chunks.push(e.data); };
+    mRec.onstop = ()=>{ stream.getTracks().forEach(t=>t.stop()); onRecStopped(); };
+    mRec.start(100);
+
+    card.classList.add('recarding');
+    recNameEl.textContent = item.ar;
+    recBar.classList.add('show');
+    recSec=0; recTimEl.textContent='0:00';
+    timerInt = setInterval(()=>{
+      recSec++;
+      const m=Math.floor(recSec/60), s=recSec%60;
+      recTimEl.textContent = m+':'+(s<10?'0':'')+s;
+    },1000);
+
+  }catch(err){
+    console.error(err);
+    /* Show detailed step-by-step error modal */
+    errModal.classList.add('show');
+  }
+}
+
+function finishRec(){
+  if(mRec && mRec.state==='recording') mRec.stop();
+  clearInterval(timerInt);
+  recBar.classList.remove('show');
+  if(recCard) recCard.classList.remove('recarding');
+}
+
+stopBtn.addEventListener('click', finishRec);
+
+function onRecStopped(){
+  const blob = new Blob(chunks, {type: mRec.mimeType});
+  const reader = new FileReader();
+  reader.onloadend = ()=>{
+    saveRec(recItem.n, reader.result);
+    if(recCard){
+      recCard.style.transition = 'border-color .3s';
+      recCard.style.borderColor = '#4CAF50';
+      setTimeout(()=>{ if(recCard) recCard.style.borderColor=''; }, 1400);
+    }
+    recCard=null; recItem=null;
+  };
+  reader.readAsDataURL(blob);
+}
+
+/* ── Stars ── */
+const starsEl=document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');s.className='star';
+  const sz=Math.random()*3+1;
+  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${1.5+Math.random()*2}s;`;
+  starsEl.appendChild(s);
+}
+
+/* ── Load saved recordings on start ── */
+window.addEventListener('load',async()=>{
+  if(!window.storage) return;
+  for(const item of NAMES) await loadRec(item.n);
+});
+</script>
+</body>
+</html>
